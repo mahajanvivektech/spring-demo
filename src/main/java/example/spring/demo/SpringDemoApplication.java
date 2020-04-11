@@ -1,9 +1,6 @@
 package example.spring.demo;
 
-import example.spring.demo.controllers.ConstructorInjectedController;
-import example.spring.demo.controllers.MyController;
-import example.spring.demo.controllers.PropertyInjectedController;
-import example.spring.demo.controllers.SetterInjectedController;
+import example.spring.demo.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -13,6 +10,10 @@ public class SpringDemoApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(SpringDemoApplication.class, args);
+
+		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+		System.out.println(i18nController.sayHello());
+		
 		MyController myController = (MyController) ctx.getBean("myController");
 		System.out.println("------------ Primary Bean");
 		System.out.println(myController.sayHello());
